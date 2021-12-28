@@ -8,4 +8,9 @@ class HomeController extends Controller
     {
         return view('visitor.index');
     }
+
+    public function showQueues()
+    {
+        return view('visitor.queue');
+    }
 }

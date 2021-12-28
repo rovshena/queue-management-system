@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CallController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\UserProfileController;
@@ -19,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
+Route::get('/live', [HomeController::class, 'showQueues'])->name('queue.live');
 Route::get('/queue', QueueController::class)->name('queue.store');
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
@@ -36,5 +38,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::put('/profile', [UserProfileController::class, 'update'])->name('profile.update');
         Route::view('/', 'admin.index')->name('index');
         Route::resource('users', UserController::class)->except(['show'])->middleware('admin');
+        Route::get('/call-next', [CallController::class, 'callNext'])->name('call.next');
     });
 });

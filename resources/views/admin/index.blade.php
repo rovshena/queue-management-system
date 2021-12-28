@@ -13,5 +13,8 @@
         <div class="section-block">
             {{ __('Dolandyryş paneline hoş geldiňiz!') }}
         </div>
+        <div class="section py-5">
+            <a href="{{ route('admin.call.next') }}" class="btn btn-primary btn-lg">Raýat kabul etmek</a>
+        </div>
     </div>
 @endsection

@@ -66,7 +66,7 @@
     <img src="{{ asset('assets/images/preloaders/miniballs.svg') }}" alt="">
 </div>
 
-<div class="app">
+<div id="app" class="app">
 
     @yield('content')
 
