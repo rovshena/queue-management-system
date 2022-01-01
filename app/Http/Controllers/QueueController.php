@@ -24,23 +24,23 @@ class QueueController extends Controller
 
             $printer = new Printer($connector);
             $printer->setJustification(Printer::JUSTIFY_CENTER);
-            $printer->setTextSize(1,2);
-            $printer->text("Пробирная палата Туркменистана" . PHP_EOL);
-            $printer->setTextSize(1,1);
+            $printer->setTextSize(1, 2);
+            $printer->text('Пробирная палата Туркменистана' . PHP_EOL);
+            $printer->setTextSize(1, 1);
             $printer->feed(1);
-            $printer->text('Номер талона ');
+            $printer->text('Номер талона');
             $printer->feed(2);
-            $printer->setTextSize(8,8);
-            $printer -> text($queue->counter);
+            $printer->setTextSize(8, 8);
+            $printer->text($queue->counter);
             $printer->feed(2);
-            $printer->setTextSize(1,2);
+            $printer->setTextSize(1, 2);
             $printer->text($queue->created_at->format('d.m.Y - H:i:s') . PHP_EOL);
-            $printer -> selectPrintMode();
-            $printer->text('ул. Героя Туркменистана ' . PHP_EOL);
-            $printer->text(' Атамурата Ниязова, 154' . PHP_EOL);
-            $printer -> cut();
+            $printer->selectPrintMode();
+            $printer->text('ул. Героя Туркменистана' . PHP_EOL);
+            $printer->text('Атамурата Ниязова, 154' . PHP_EOL);
+            $printer->cut();
             $printer->feedForm();
-            $printer -> close();
+            $printer->close();
 
         } catch (\Exception $e) {
             return back()->with('error', 'Tehniki näsazlyk ýüze çykdy. Administratora ýüzlenmegiňizi haýyş edýäris!');

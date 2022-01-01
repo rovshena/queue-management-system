@@ -14,7 +14,6 @@ const app = new Vue({
     created() {
         window.Echo.channel('live-queue-management-system')
             .listen('CallNext', (e) => {
-                console.log(e)
                 this.messages.unshift({
                     counter: e.queue.counter,
                     gate: e.user.gate
