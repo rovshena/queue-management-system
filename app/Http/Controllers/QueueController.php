@@ -19,8 +19,11 @@ class QueueController extends Controller
 
         try {
 
+            $printer_ip_address = env('PRINTER_IP_ADDRESS', '127.0.0.1');
+            $printer_share_name = env('PRINTER_SHARE_NAME', 'ReceiptPrinter');
+
             $connector = null;
-            $connector = new WindowsPrintConnector("smb://192.168.10.99/customvk");
+            $connector = new WindowsPrintConnector("smb://$printer_ip_address/$printer_share_name");
 
             $printer = new Printer($connector);
             $printer->setJustification(Printer::JUSTIFY_CENTER);
